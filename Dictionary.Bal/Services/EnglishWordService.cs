@@ -3,6 +3,7 @@ using Dictionary.Bal.Interfaces;
 using Dictionary.Bal.ModelsDto;
 using Dictionary.Dal.Interfaces;
 using Dictionary.Dal.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,6 +18,12 @@ namespace Dictionary.Bal.Services
         {
             _work = work;
             _mapper = mapper;
+        }
+        public void AddWords(WordDto word)
+        {
+            throw  new NotImplementedException();
+            //var mapwords=_mapper.Map<WordDto,EnglishWord>(word);
+            //_work.EnglishWordRepository.CreateEnglisWord(mapwords);
         }
 
         public  void Add(EnglishWordDto model)
@@ -42,9 +49,10 @@ namespace Dictionary.Bal.Services
 
         public async Task<EnglishWordDto>GetByIdAsync(int id)
         {
-            var mapword= await _work.EnglishWordRepository.GetByIdAsync(id);
-            var word= _mapper.Map<EnglishWord,EnglishWordDto>(mapword);
-            return word;
+            throw new NotImplementedException();
+            //var mapword= await _work.EnglishWordRepository.GetByIdAsync(id);
+            //var word= _mapper.Map<EnglishWord,EnglishWordDto>(mapword);
+            //return word;
         }
 
         public  void Update(EnglishWordDto model)

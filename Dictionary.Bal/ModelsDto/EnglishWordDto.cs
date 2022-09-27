@@ -10,6 +10,6 @@ namespace Dictionary.Bal.ModelsDto
     {
         public int Id { get; set; }
         public string Word { get; set; }
-       // public ICollection<WordDto> UkranianWords { get; set; }
+        public ICollection<UkranianWordDto> UkranianWordsDto { get; set; }
     }
 }

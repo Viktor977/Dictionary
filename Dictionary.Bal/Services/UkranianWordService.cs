@@ -43,15 +43,20 @@ namespace Dictionary.Bal.Services
 
         public  async Task<UkranianWordDto> GetByIdAsync(int id)
         {
-            var mapword =await _work.UkranianWordRepository.GetByIdAsync(id);
-            var word = _mapper.Map<UkranianWord, UkranianWordDto>(mapword);
-            return word;
+            throw new NotImplementedException();
+            //var mapword =await _work.UkranianWordRepository.GetByIdAsync(id);
+            //var word = _mapper.Map<UkranianWord, UkranianWordDto>(mapword);
+            //return word;
         }
 
         public void Update(UkranianWordDto model)
         {
             var word = _mapper.Map<UkranianWordDto, UkranianWord>(model);
             _work.UkranianWordRepository.Update(word);
+        }
+       public void AddWords(WordDto word)
+        {
+            throw new NotImplementedException();
         }
     }
 }

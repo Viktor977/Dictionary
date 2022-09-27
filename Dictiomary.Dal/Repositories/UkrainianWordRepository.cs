@@ -10,33 +10,38 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Dal.Repositories
 {
-    public class UkrainianWordRepository : RepositoryBase<UkranianWord>, IUkranianWordRepository
+    public class UkrainianWordRepository :  IUkranianWordRepository
     {
-        public UkrainianWordRepository(DictionaryDbContext context) : base(context) { }
+        private readonly DictionaryDbContext _contex;
+        public UkrainianWordRepository(DictionaryDbContext context) => _contex = context; 
 
-        public void CreateUkranianWord(UkranianWord ukranianWord)
+        public void Create(UkranianWord ukranianWord)
         {
-            Create(ukranianWord);
+            _contex.Ukranians.AddRange(ukranianWord);
         }
 
-        public void DeleteUkraininWord(UkranianWord ukranianWord)
+        public void Delete(UkranianWord ukranianWord)
         {
-            Delete(ukranianWord);
+            _contex.Ukranians.Remove(ukranianWord);
         }
 
-        public void UpdateUkranianWord(UkranianWord ukranianWord)
+        public void Update(UkranianWord ukranianWord)
         {
-            Update(ukranianWord);
+            _contex.Ukranians.Update(ukranianWord);
         }
 
         public async Task<IEnumerable<UkranianWord>> GetAllAsync()
         {
-            return await GetAll().OrderBy(t => t.Word).ToListAsync();
+            return await _contex.Ukranians.ToListAsync();
         }
 
-        public  async Task<UkranianWord> GetByIdAsync(int id)
+        public  async Task<UkranianWord> GetAsync(string word)
         {
-            return await GetByCondition(word => word.Id.Equals(id)).FirstOrDefaultAsync();
+            throw new NotImplementedException();
+            //return await _contex.Ukranians.Include(t => t.EnglishWords)
+            //     .ThenInclude(t => t.EnglishWord)
+            //     .Where(t => t.Word == word).ToListAsync();
+           
         }
 
     }

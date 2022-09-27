@@ -10,8 +10,8 @@ namespace Dictionary.Dal.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetByCondition(Expression<Func<TEntity,bool>>expration);
+       Task<IEnumerable<TEntity>> GetAllAsync();
+       Task<TEntity> GetAsync(string word);
         void Create(TEntity entity);
         void Delete(TEntity entity);
         void Update(TEntity entity);

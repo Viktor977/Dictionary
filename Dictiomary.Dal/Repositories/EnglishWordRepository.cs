@@ -11,33 +11,38 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Dal.Repositories
 {
-    public class EnglishWordRepository : RepositoryBase<EnglishWord>, IEnglishWordRepository
+    public class EnglishWordRepository :  IEnglishWordRepository
     {
-        public EnglishWordRepository(DictionaryDbContext context) : base(context) { }
+        private DictionaryDbContext _dictionary;
+        public EnglishWordRepository(DictionaryDbContext context)=>_dictionary= context;
         
         public async Task<IEnumerable<EnglishWord>> GetAllAsync()
         {
-            return await GetAll().OrderBy(t => t.Id).ToListAsync();
+            return await _dictionary.Englishes.ToListAsync();
+          
         }
 
-        public async Task<EnglishWord> GetByIdAsync(int id)
-        {          
-                return await GetByCondition(word => word.Id.Equals(id))
-                    .FirstOrDefaultAsync();                    
+        public async Task<EnglishWord>GetAsync(string word)
+        {
+            throw new NotImplementedException();
+            //return await _dictionary.Englishes
+            //    .Include(t => t.UkranianWords.
+            //    Select(t => t.UkrId);
+                                                 
         }
 
-        public void UpdateEnglishWord(EnglishWord englishWord)
+        public void Update(EnglishWord englishWord)
         {
-           Update(englishWord);
+         _dictionary.Englishes.Update(englishWord);
         }
-        public void CreateEnglisWord(EnglishWord englisWord)
+        public void Create(EnglishWord englisWord)
         {
-            Create(englisWord);
+            _dictionary.Englishes.AddRange(englisWord);
         }
 
-        public void DeleteEnglisWord(EnglishWord englishWord)
+        public void Delete(EnglishWord englishWord)
         {
-           Delete(englishWord);
+            _dictionary.Englishes.RemoveRange(englishWord);
         }
 
     }

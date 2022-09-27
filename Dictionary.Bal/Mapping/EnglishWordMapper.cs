@@ -13,7 +13,15 @@ namespace Dictionary.Bal.Mapping
     {
         public EnglishWordMapper()
         {
-            CreateMap<EnglishWord, EnglishWordDto>().ReverseMap();
+            CreateMap<EnglishWord, EnglishWordDto>()
+                .ForMember(t => t.Word, r => r.MapFrom(r => r.Word))
+                .ForMember(t => t.UkranianWordsDto, r => r.MapFrom(t => t.UkranianWords
+                .Select(x=>x.UkranianWord).ToList()));
+                
+            CreateMap<EnglishWordDto, EnglishWord>()
+                .ForMember(t=>t.Word, r => r.MapFrom(r => r.Word))
+                .ForMember(t=>t.UkranianWords,r=>r.MapFrom(x=>x.UkranianWordsDto
+                .Select(x=>x.Word)));
           
         }
     }

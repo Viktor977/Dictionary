@@ -9,10 +9,6 @@ namespace Dictionary.Dal.Interfaces
 {
     public interface IEnglishWordRepository : IRepository<EnglishWord>
     {
-        Task<IEnumerable<EnglishWord>> GetAllAsync();
-        Task<EnglishWord>GetByIdAsync(int id);
-        void CreateEnglisWord(EnglishWord englisWord);
-        void DeleteEnglisWord(EnglishWord englishWord);
-        void UpdateEnglishWord(EnglishWord englishWord);
+       
     }
 }
