@@ -18,17 +18,16 @@ namespace Dictionary.Dal.Repositories
         
         public async Task<IEnumerable<EnglishWord>> GetAllAsync()
         {
-            return await _dictionary.Englishes.ToListAsync();
-          
+            return await _dictionary.Englishes.ToListAsync();         
         }
 
         public async Task<EnglishWord>GetAsync(string word)
         {
+            //return _dictionary.Set<Word>()
+            //     .Include(t => t.EnglishWord)
+            //     .Include(t => t.UkranianWord);
             throw new NotImplementedException();
-            //return await _dictionary.Englishes
-            //    .Include(t => t.UkranianWords.
-            //    Select(t => t.UkrId);
-                                                 
+                                                                
         }
 
         public void Update(EnglishWord englishWord)
@@ -37,13 +36,12 @@ namespace Dictionary.Dal.Repositories
         }
         public void Create(EnglishWord englisWord)
         {
-            _dictionary.Englishes.AddRange(englisWord);
+            _dictionary.AddRange(englisWord);          
         }
 
         public void Delete(EnglishWord englishWord)
         {
-            _dictionary.Englishes.RemoveRange(englishWord);
+            _dictionary.Englishes.RemoveRange(englishWord);          
         }
-
     }
 }
