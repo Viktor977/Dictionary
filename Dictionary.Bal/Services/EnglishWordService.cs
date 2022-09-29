@@ -29,7 +29,7 @@ namespace Dictionary.Bal.Services
         public  void Add(EnglishWordDto model)
         {
             var word = _mapper.Map<EnglishWordDto, EnglishWord>(model);
-            _work.EnglishWordRepository.Create(word);
+            _work.EnglishWordRepository.AddAsync(word);
            
         }
 

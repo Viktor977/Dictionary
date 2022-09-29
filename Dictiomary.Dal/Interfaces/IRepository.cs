@@ -12,7 +12,7 @@ namespace Dictionary.Dal.Interfaces
     {
        Task<IEnumerable<TEntity>> GetAllAsync();
        Task<TEntity> GetAsync(string word);
-        void Create(TEntity entity);
+       Task AddAsync(TEntity entity);
         void Delete(TEntity entity);
         void Update(TEntity entity);
     }

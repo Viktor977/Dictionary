@@ -25,7 +25,7 @@ namespace Dictionary.Bal.Services
         public void  Add(UkranianWordDto model)
         {
             var word = _mapper.Map<UkranianWordDto, UkranianWord>(model);
-             _work.UkranianWordRepository.Create(word);
+             _work.UkranianWordRepository.AddAsync(word);
         }
 
         public void Delete(UkranianWordDto model)

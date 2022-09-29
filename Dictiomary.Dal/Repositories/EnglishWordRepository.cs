@@ -32,11 +32,11 @@ namespace Dictionary.Dal.Repositories
 
         public void Update(EnglishWord englishWord)
         {
-         _dictionary.Englishes.Update(englishWord);
+            _dictionary.Englishes.Update(englishWord);
         }
-        public void Create(EnglishWord englisWord)
+        public async Task AddAsync(EnglishWord word)
         {
-            _dictionary.AddRange(englisWord);          
+            await _dictionary.Englishes.AddRangeAsync(word);          
         }
 
         public void Delete(EnglishWord englishWord)

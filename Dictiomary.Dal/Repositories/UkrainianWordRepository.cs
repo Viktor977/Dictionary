@@ -15,7 +15,7 @@ namespace Dictionary.Dal.Repositories
         private readonly DictionaryDbContext _contex;
         public UkrainianWordRepository(DictionaryDbContext context) => _contex = context; 
 
-        public void Create(UkranianWord ukranianWord)
+        public void Update(UkranianWord ukranianWord)
         {
             _contex.Ukranians.AddRange(ukranianWord);
         }
@@ -25,9 +25,9 @@ namespace Dictionary.Dal.Repositories
             _contex.Ukranians.Remove(ukranianWord);
         }
 
-        public void Update(UkranianWord ukranianWord)
+        public async Task AddAsync(UkranianWord ukranianWord)
         {
-            _contex.Ukranians.Update(ukranianWord);
+            await _contex.Ukranians.AddRangeAsync(ukranianWord);
         }
 
         public async Task<IEnumerable<UkranianWord>> GetAllAsync()
@@ -43,6 +43,5 @@ namespace Dictionary.Dal.Repositories
             //     .Where(t => t.Word == word).ToListAsync();
            
         }
-
     }
 }
