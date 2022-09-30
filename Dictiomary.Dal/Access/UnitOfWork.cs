@@ -1,5 +1,6 @@
-﻿using Dictionary.Dal.Interfaces;
-using Dictionary.Dal.Repositories;
+﻿using Dictiomary.Dal.Interfaces;
+using Dictiomary.Dal.Repositories;
+using Dictionary.Dal.Interfaces;
 using System.Threading.Tasks;
 
 namespace Dictionary.Dal.Access
@@ -7,36 +8,22 @@ namespace Dictionary.Dal.Access
     public class UnitOfWork : IUnitOfWork
     {
         private DictionaryDbContext _context;
-        private IUkranianWordRepository _ukranianWordRepository;
-        private IEnglishWordRepository _englishWordRepository;
+       
+        private IWordRepository _wordRepository;
         public UnitOfWork(DictionaryDbContext context)
         {
             _context = context;
         }
-
-        public IUkranianWordRepository UkranianWordRepository
+     
+        public IWordRepository WordRepository
         {
             get
             {
-                if (_ukranianWordRepository == null)
+                if (_wordRepository == null)
                 {
-                    _ukranianWordRepository = new UkrainianWordRepository(_context);
+                    _wordRepository = new WordRepository(_context);
                 }
-
-                return _ukranianWordRepository;
-            }
-        }
-
-        public IEnglishWordRepository EnglishWordRepository
-        {
-            get
-            {
-                if (_englishWordRepository == null)
-                {
-                    _englishWordRepository= new EnglishWordRepository(_context);
-                }
-
-                return _englishWordRepository;
+                return _wordRepository;
             }
         }
 

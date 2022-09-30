@@ -1,16 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Dictiomary.Dal.Interfaces;
 using System.Threading.Tasks;
 
 namespace Dictionary.Dal.Interfaces
 {
     public interface IUnitOfWork
-    {
-        IUkranianWordRepository UkranianWordRepository { get; }
-        IEnglishWordRepository EnglishWordRepository { get; }
+    {  
+        IWordRepository WordRepository { get; }
         Task SaveAsync();
     }
 }

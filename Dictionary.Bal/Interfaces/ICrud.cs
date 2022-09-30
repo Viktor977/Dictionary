@@ -11,13 +11,9 @@ namespace Dictionary.Bal.Interfaces
     public interface ICrud<TModel> where TModel : class
     {
         Task<IEnumerable<TModel>> GetAllAsync();
-        Task<TModel> GetByIdAsync(int id);
-
+        Task<IEnumerable<TModel>> GetByIdAsync(int id);
         void Add(TModel model);
-
         void Update(TModel model);
-
         void Delete(TModel model);
-        void AddWords(WordDto word);
     }
 }

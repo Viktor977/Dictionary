@@ -1,5 +1,6 @@
-﻿using Dictionary.Dal.Interfaces;
-using Dictionary.Dal.Repositories;
+﻿using Dictiomary.Dal.Interfaces;
+using Dictiomary.Dal.Repositories;
+using Dictionary.Dal.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Dictionary.Dal.Access
@@ -10,8 +11,7 @@ namespace Dictionary.Dal.Access
         {
             services.AddTransient<DictionaryDbContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IUkranianWordRepository, UkrainianWordRepository>();
-            services.AddTransient<IEnglishWordRepository, EnglishWordRepository>();
+            services.AddTransient<IWordRepository, WordRepository>();
         }
     }
 }

@@ -1,0 +1,12 @@
+:host {
+    min-height: 30px;
+    background-color: #13292a;
+     display: flex;
+    justify-content: center;
+}
+
+div {
+    margin: 5px 10px 0;
+    float: right;
+    color: #ddd;
+}

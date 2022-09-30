@@ -13,11 +13,11 @@ namespace Dictionary.Bal.Mapping
     {
         public WordsMapper()
         {
-            CreateMap<WordDto, EnglishWord>()
-                .ForMember(dest => dest.UkranianWords,
-                act => act.MapFrom(t => t.UkranianWordsDto))
-                .ForMember(dest => dest.Word,
-                act => act.MapFrom(t => t.EnglishWordDto));
+            CreateMap<WordDto, Word>();
+                //.ForMember(dest => dest.UkranianWords,
+                //act => act.MapFrom(t => t.UkranianWordsDto))
+                //.ForMember(dest => dest.Word,
+                //act => act.MapFrom(t => t.EnglishWordDto));
                 
         }
     }
