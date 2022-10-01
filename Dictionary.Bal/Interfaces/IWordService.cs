@@ -11,6 +11,8 @@ namespace Dictionary.Bal.Interfaces
     {
         Task<IEnumerable<EnglishWordDto>>GetEngWords(string word);
         Task<IEnumerable<UkranianWordDto>>GetUkrWords(string word);
-        Task AddEngWord(WordDto english);
+        Task AddWordAsync(WordDto words);
+        Task UpdateAsync(WordDto words);
+        Task DeleteAsync(WordDto words);
     }
 }

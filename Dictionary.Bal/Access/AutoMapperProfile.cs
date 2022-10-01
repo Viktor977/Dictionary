@@ -19,8 +19,8 @@ namespace Dictionary.Bal.Access
                 config.AddProfile<WordsMapper>();
             });
             var profile = configuration.CreateMapper();
-            return profile;
 
+            return profile;
         }
     }
 }

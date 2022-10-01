@@ -20,12 +20,17 @@ namespace Dictiomary.Dal.Repositories
 
         public async Task AddAsync(Word entity)
         {
+            await _context.Englishes.AddAsync(entity.EnglishWord);
+            await _context.Ukranians.AddAsync(entity.UkranianWord);
             await _context.Words.AddAsync(entity);
         }
 
         public void Delete(Word entity)
         {
-           _context.Remove(entity);
+            _context.Englishes.Remove(entity.EnglishWord);
+            _context.Ukranians.Remove(entity.UkranianWord);
+            _context.Words.Remove(entity);
+           
         }
 
         public async Task<IEnumerable<Word>> GetAllAsync()
@@ -38,7 +43,9 @@ namespace Dictiomary.Dal.Repositories
 
         public void Update(Word entity)
         {
-            _context.Update(entity);
+            _context.Englishes.Update(entity.EnglishWord);
+            _context.Ukranians.Update(entity.UkranianWord);
+            _context.Words.Update(entity);
         }
     }
 }

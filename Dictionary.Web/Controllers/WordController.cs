@@ -8,35 +8,64 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("words")]
     [ApiController]
     public class WordController : ControllerBase
     {
-        private readonly IWordService provider;
+        private readonly IWordService service;
         public WordController(IWordService provider)
         {
-            this.provider = provider;
+            service = provider;
         }
 
-        [HttpGet("ukrwords")]
+        [HttpGet("ukr")]
         public async Task<ActionResult<IEnumerable<UkranianWordDto>>> GetAll([FromQuery]string word)
         {
-            var fwords = await provider.GetUkrWords(word);                     
+            if (string.IsNullOrWhiteSpace(word))
+            {
+                return BadRequest();
+            }
+            var fwords = await service.GetUkrWords(word);                     
             return Ok(fwords);
         }
 
-        [HttpGet("engwords")]
+        [HttpGet("eng")]
         public async Task<ActionResult<IEnumerable<EnglishWordDto>>> GetAllEnglish([FromQuery] string word)
         {
-            var words= await provider.GetEngWords(word);
+            var words= await service.GetEngWords(word);
             return Ok(words);
         }
 
         [HttpPost]
-        public async Task<ActionResult>Add([FromBody]WordDto word)
+        public async Task<ActionResult>AddEng([FromBody]WordCreater words)
         {
-            await provider.AddEngWord(word);
+            var word = GetWordDto(words);
+            await service.AddWordAsync(word);
             return Ok();
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete([FromBody] WordCreater words)
+        {
+            var word = GetWordDto(words);
+            await service.DeleteAsync(word);
+            return Ok();
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult> Update([FromBody] WordCreater words)
+        {
+            var word = GetWordDto(words);
+            await service.UpdateAsync(word);
+            return Ok();
+        }
+        private WordDto GetWordDto(WordCreater words)
+        {
+            var word = new WordDto();
+            word.EnglishWordDto = words.EnglishWord;
+            word.UkranianWordDto = words.UkranianWord;
+            return word;
+        }
+       
     }
 }

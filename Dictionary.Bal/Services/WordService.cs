@@ -20,13 +20,38 @@ namespace Dictionary.Bal.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
-        public async Task AddEngWord(WordDto wordDto)
+       
+        public  async Task UpdateAsync(WordDto wordDto)
         {
-            var word=_mapper.Map<WordDto,Word>(wordDto);
+            var word=GetWord(wordDto);
+            _unitOfWork.WordRepository.Update(word);
+            await _unitOfWork.SaveAsync();
+        }
+
+        public async Task DeleteAsync(WordDto words)
+        {
+            var word=GetWord(words);
+            _unitOfWork.WordRepository.Delete(word);
+            await _unitOfWork.SaveAsync();
+        }
+
+        public async Task AddWordAsync(WordDto wordDto)
+        {       
+            var word= GetWord(wordDto);
             await _unitOfWork.WordRepository.AddAsync(word);
             await _unitOfWork.SaveAsync();
         }
+        private Word GetWord(WordDto wordDto)
+        {
+            var eng = _mapper.Map<EnglishWordDto, EnglishWord>(wordDto.EnglishWordDto);
+            var ukr = _mapper.Map<UkranianWordDto, UkranianWord>(wordDto.UkranianWordDto);
+            var word = _mapper.Map<WordDto, Word>(wordDto);
+            word.UkranianWord = ukr;
+            word.EnglishWord = eng;
+            return word;
+        }
+
+
         public async Task<IEnumerable<UkranianWordDto>> GetUkrWords(string word)
         {
             var words = await _unitOfWork.WordRepository.GetAllAsync();
@@ -36,7 +61,6 @@ namespace Dictionary.Bal.Services
                 IEnumerable<UkranianWordDto>>(ukwords);
 
             return ukwordsDto;
-
         }
 
         public async Task<IEnumerable<EnglishWordDto>> GetEngWords(string word)
@@ -48,7 +72,7 @@ namespace Dictionary.Bal.Services
                 IEnumerable<EnglishWordDto>>(enwords);
 
             return enwordsDto;
+        }      
 
-        }
     }
 }
