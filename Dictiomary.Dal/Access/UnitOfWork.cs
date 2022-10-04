@@ -10,11 +10,9 @@ namespace Dictionary.Dal.Access
         private DictionaryDbContext _context;
        
         private IWordRepository _wordRepository;
-        public UnitOfWork(DictionaryDbContext context)
-        {
-            _context = context;
-        }
-     
+      
+        public UnitOfWork(DictionaryDbContext context) => _context = context;
+         
         public IWordRepository WordRepository
         {
             get
@@ -23,14 +21,11 @@ namespace Dictionary.Dal.Access
                 {
                     _wordRepository = new WordRepository(_context);
                 }
+
                 return _wordRepository;
             }
         }
-
-        public async Task SaveAsync()
-        {
-          await _context.SaveChangesAsync();
-            
-        }
+        public async Task SaveAsync() => await _context.SaveChangesAsync();
+       
     }
 }

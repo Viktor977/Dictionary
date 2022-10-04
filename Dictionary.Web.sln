@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictiomary.Dal", "Dictiomar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Bal", "Dictionary.Bal\Dictionary.Bal.csproj", "{5939D2EF-62A6-49AB-AB8C-088EF64C931D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop", "Desktop\Desktop.csproj", "{86A017F0-006A-4C8B-91E8-38C4048FD711}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Tests", "Dictionary.Tests\Dictionary.Tests.csproj", "{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Tests", "Dictionary.Tests\Dictionary.Tests.csproj", "{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{5939D2EF-62A6-49AB-AB8C-088EF64C931D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5939D2EF-62A6-49AB-AB8C-088EF64C931D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5939D2EF-62A6-49AB-AB8C-088EF64C931D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86A017F0-006A-4C8B-91E8-38C4048FD711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86A017F0-006A-4C8B-91E8-38C4048FD711}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86A017F0-006A-4C8B-91E8-38C4048FD711}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86A017F0-006A-4C8B-91E8-38C4048FD711}.Release|Any CPU.Build.0 = Release|Any CPU
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU

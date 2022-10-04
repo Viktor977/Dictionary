@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dictionary.Web.Controllers
@@ -25,7 +26,12 @@ namespace Dictionary.Web.Controllers
             {
                 return BadRequest();
             }
-            var fwords = await service.GetUkrWords(word);                     
+            
+            var fwords = await service.GetUkrWords(word);   
+            if(fwords.Count()==0)
+            {
+                return NotFound();
+            }
             return Ok(fwords);
         }
 

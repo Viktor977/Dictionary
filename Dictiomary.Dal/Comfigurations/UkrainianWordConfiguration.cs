@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Dictionary.Dal.Configurations
 {
-    internal class UkranianWordConfiguration : IEntityTypeConfiguration<UkranianWord>
+    internal class UkrainianWordConfiguration : IEntityTypeConfiguration<UkranianWord>
     {
         public void Configure(EntityTypeBuilder<UkranianWord> builder)
         {

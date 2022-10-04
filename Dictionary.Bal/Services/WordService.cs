@@ -48,17 +48,19 @@ namespace Dictionary.Bal.Services
             var word = _mapper.Map<WordDto, Word>(wordDto);
             word.UkranianWord = ukr;
             word.EnglishWord = eng;
+
             return word;
         }
 
 
         public async Task<IEnumerable<UkranianWordDto>> GetUkrWords(string word)
         {
-            var words = await _unitOfWork.WordRepository.GetAllAsync();
-            var ukwords = words.Where(t => t.EnglishWord.Word == word)
-                .Select(t => t.UkranianWord);
+           
+            var ukwords = await _unitOfWork.WordRepository.GetAllAsync();
+            var uk = ukwords.Where(t=>t.EnglishWord.Word==word)
+                .Select(t=>t.UkranianWord);
             var ukwordsDto = _mapper.Map<IEnumerable<UkranianWord>,
-                IEnumerable<UkranianWordDto>>(ukwords);
+                IEnumerable<UkranianWordDto>>(uk);
 
             return ukwordsDto;
         }
@@ -73,6 +75,5 @@ namespace Dictionary.Bal.Services
 
             return enwordsDto;
         }      
-
     }
 }

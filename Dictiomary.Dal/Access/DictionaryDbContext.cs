@@ -1,4 +1,5 @@
-﻿using Dictionary.Dal.Models;
+﻿using Dictionary.Dal.Configurations;
+using Dictionary.Dal.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,12 @@ namespace Dictionary.Dal.Access
         public DbSet<Word> Words { get; set; }
 
         public DictionaryDbContext(DbContextOptions<DictionaryDbContext> options) : base(options) { }
-        public DictionaryDbContext() { }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            optionsBuilder.UseSqlServer("Data Source=; Initial Catalog=WordDB; Integrated Security=SSPI;",
-                builder => builder.EnableRetryOnFailure());
+            builder.ApplyConfiguration(new EnglishConfiguration());
+            builder.ApplyConfiguration(new UkrainianWordConfiguration());
+            builder.ApplyConfiguration(new WordConfiguration());
         }
     }
 }

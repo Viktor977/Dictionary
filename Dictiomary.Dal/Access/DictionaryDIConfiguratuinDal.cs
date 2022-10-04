@@ -9,9 +9,9 @@ namespace Dictionary.Dal.Access
     {
         public static  void Configurations(IServiceCollection services)
         {
-            services.AddTransient<DictionaryDbContext>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IWordRepository, WordRepository>();
+            services.AddScoped<DictionaryDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IWordRepository, WordRepository>();
         }
     }
 }

@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { WordsService } from './Services/words.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { SigninComponent } from './auth/signin/signin.component';
       {path:'signin',component:SigninComponent}
     ])
   ],
-  providers: [],
+  providers: [WordsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

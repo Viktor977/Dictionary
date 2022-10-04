@@ -13,26 +13,22 @@ namespace Dictiomary.Dal.Repositories
     public class WordRepository : IWordRepository
     {
         private readonly DictionaryDbContext _context;
-        public WordRepository(DictionaryDbContext context)
-        {
-            _context = context;
-        }
-
+        public WordRepository(DictionaryDbContext context) => _context = context;     
         public async Task AddAsync(Word entity)
         {
-            await _context.Englishes.AddAsync(entity.EnglishWord);
-            await _context.Ukranians.AddAsync(entity.UkranianWord);
-            await _context.Words.AddAsync(entity);
+            await _context.Englishes.AddRangeAsync(entity.EnglishWord);
+            await _context.Ukranians.AddRangeAsync(entity.UkranianWord);
+            await _context.Words.AddRangeAsync(entity);
         }
 
         public void Delete(Word entity)
         {
-            _context.Englishes.Remove(entity.EnglishWord);
-            _context.Ukranians.Remove(entity.UkranianWord);
-            _context.Words.Remove(entity);
+             _context.Ukranians.Remove(entity.UkranianWord);
+             _context.Englishes.Remove(entity.EnglishWord);
+             _context.Words.Remove(entity);
            
         }
-
+       
         public async Task<IEnumerable<Word>> GetAllAsync()
         {
             return await _context.Words
