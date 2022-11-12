@@ -1,18 +1,13 @@
 ﻿using Dictionary.Bal.ModelsDto;
-using System;
+using Dictionary.Dal.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dictionary.Bal.Interfaces
 {
-    public interface IWordService 
+    public interface IWordService : ICrud<WordDto>
     {
-        Task<IEnumerable<EnglishWordDto>>GetEngWords(string word);
-        Task<IEnumerable<UkranianWordDto>>GetUkrWords(string word);
-        Task AddWordAsync(WordDto words);
-        Task UpdateAsync(WordDto words);
-        Task DeleteAsync(WordDto words);
+        IEnumerable<WordDto>GetEngWords(UkranianWordDto ukranianWordDto);
+        IEnumerable<WordDto>GetUkrWords(EnglishWordDto englishWordDto);
+       
     }
 }

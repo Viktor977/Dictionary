@@ -16,9 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dictiomary.Dal\Dictiomary.Dal.csproj" />
+    <ProjectReference Include="..\Dictiomary.Dal\Dictionary.Dal.csproj" />
     <ProjectReference Include="..\Dictionary.Bal\Dictionary.Bal.csproj" />
-    <ProjectReference Include="..\Dictionary.Web\Dictionary.Web.csproj" />
   </ItemGroup>
 
 </Project>

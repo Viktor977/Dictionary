@@ -7,8 +7,7 @@ namespace Dictionary.Dal.Configurations
     internal class EnglishConfiguration : IEntityTypeConfiguration<EnglishWord>
     {
         public void Configure(EntityTypeBuilder<EnglishWord> builder)
-        {
-            builder.Property(t => t.Word).HasMaxLength(150);
+        {          
             builder.HasMany(t => t.UkranianWords)
                 .WithOne(t => t.EnglishWord)
                 .HasForeignKey(t => t.EngId)

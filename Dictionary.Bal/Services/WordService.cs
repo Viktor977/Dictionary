@@ -20,60 +20,44 @@ namespace Dictionary.Bal.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-       
-        public  async Task UpdateAsync(WordDto wordDto)
+
+        public async Task Add(WordDto model)
         {
-            var word=GetWord(wordDto);
-            _unitOfWork.WordRepository.Update(word);
+            var word = _mapper.Map<Word>(model);
+            _unitOfWork.WordRepository.Add(word);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task DeleteAsync(WordDto words)
+        public async Task Delete(WordDto model)
         {
-            var word=GetWord(words);
+            var word = _mapper.Map<Word>(model);
             _unitOfWork.WordRepository.Delete(word);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task AddWordAsync(WordDto wordDto)
-        {       
-            var word= GetWord(wordDto);
-            await _unitOfWork.WordRepository.AddAsync(word);
+        public IEnumerable<WordDto> GetByCondition(WordDto model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<WordDto> GetEngWords(UkranianWordDto ukranianWordDto)
+        {
+            //var word = _mapper.Map<UkranianWord>(ukranianWordDto);
+            //var words = _unitOfWork.WordRepository.GetByCondition(() => { word});
+            //return words;
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<WordDto> GetUkrWords(EnglishWordDto englishWordDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task Update(WordDto model)
+        {
+            var word = _mapper.Map<Word>(model);
+            _unitOfWork.WordRepository.Update(word);
             await _unitOfWork.SaveAsync();
         }
-        private Word GetWord(WordDto wordDto)
-        {
-            var eng = _mapper.Map<EnglishWordDto, EnglishWord>(wordDto.EnglishWordDto);
-            var ukr = _mapper.Map<UkranianWordDto, UkranianWord>(wordDto.UkranianWordDto);
-            var word = _mapper.Map<WordDto, Word>(wordDto);
-            word.UkranianWord = ukr;
-            word.EnglishWord = eng;
-
-            return word;
-        }
-
-
-        public async Task<IEnumerable<UkranianWordDto>> GetUkrWords(string word)
-        {
-           
-            var ukwords = await _unitOfWork.WordRepository.GetAllAsync();
-            var uk = ukwords.Where(t=>t.EnglishWord.Word==word)
-                .Select(t=>t.UkranianWord);
-            var ukwordsDto = _mapper.Map<IEnumerable<UkranianWord>,
-                IEnumerable<UkranianWordDto>>(uk);
-
-            return ukwordsDto;
-        }
-
-        public async Task<IEnumerable<EnglishWordDto>> GetEngWords(string word)
-        {
-            var words = await _unitOfWork.WordRepository.GetAllAsync();
-            var enwords = words.Where(t => t.UkranianWord.Word == word)
-                .Select(t => t.EnglishWord);
-            var enwordsDto = _mapper.Map<IEnumerable<EnglishWord>,
-                IEnumerable<EnglishWordDto>>(enwords);
-
-            return enwordsDto;
-        }      
     }
 }

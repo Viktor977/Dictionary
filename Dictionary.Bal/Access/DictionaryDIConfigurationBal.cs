@@ -11,6 +11,8 @@ namespace Dictionary.Bal.Access
         {
             DictionaryDIConfiguratuinDal.Configurations(service);
             service.AddScoped<IWordService,WordService>();
+            service.AddScoped<IUkrWordService,UkrWordService>();
+            service.AddScoped<IEngWordService,EngWordService>();
             var profile = new AutoMapperProfile();
             service.AddSingleton(profile.GetMapper());
         }

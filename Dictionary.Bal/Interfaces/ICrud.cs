@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 namespace Dictionary.Bal.Interfaces
 {
     public interface ICrud<TModel> where TModel : class
-    {
-        Task<IEnumerable<TModel>> GetAllAsync();
-        Task<IEnumerable<TModel>> GetByIdAsync(int id);
-        void Add(TModel model);
-        void Update(TModel model);
-        void Delete(TModel model);
+    {        
+        Task Add(TModel model);
+        Task Update(TModel model);
+        Task Delete(TModel model);
     }
 }

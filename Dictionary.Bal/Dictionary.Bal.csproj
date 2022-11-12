@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dictiomary.Dal\Dictiomary.Dal.csproj" />
+    <ProjectReference Include="..\Dictiomary.Dal\Dictionary.Dal.csproj" />
   </ItemGroup>
 
 </Project>

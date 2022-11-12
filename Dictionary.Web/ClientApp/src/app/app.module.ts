@@ -11,6 +11,8 @@ import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { WordsService } from './Services/words.service';
+import { UkrpageComponent } from './ukrpage/ukrpage.component';
+import { EngpageComponent } from './engpage/engpage.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { WordsService } from './Services/words.service';
     FooterComponent,
     BodyComponent,
     LoginComponent,
-    SigninComponent  
+    SigninComponent,
+    UkrpageComponent,
+    EngpageComponent  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +34,9 @@ import { WordsService } from './Services/words.service';
       {path:'',redirectTo: '/header', pathMatch: 'full'},
       {path:'header',component:HeaderComponent},
       {path:'login',component:LoginComponent},
-      {path:'signin',component:SigninComponent}
+      {path:'signin',component:SigninComponent},
+      {path:'ukr',component:UkrpageComponent},
+      {path:'eng',component:EngpageComponent}
     ])
   ],
   providers: [WordsService],

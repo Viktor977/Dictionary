@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Web", "Dictionary.Web\Dictionary.Web.csproj", "{8B73EBA3-870C-4CDE-AE39-BB43ED6507D6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictiomary.Dal", "Dictiomary.Dal\Dictiomary.Dal.csproj", "{936BE02D-79B3-4E37-8099-DE7BF649B8EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Dal", "Dictiomary.Dal\Dictionary.Dal.csproj", "{936BE02D-79B3-4E37-8099-DE7BF649B8EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Bal", "Dictionary.Bal\Dictionary.Bal.csproj", "{5939D2EF-62A6-49AB-AB8C-088EF64C931D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary.Tests", "Dictionary.Tests\Dictionary.Tests.csproj", "{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.API", "Dictionary.API\Dictionary.API.csproj", "{285D75A9-606B-4AA1-AA0F-0604932E3C6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B73EBA3-870C-4CDE-AE39-BB43ED6507D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B73EBA3-870C-4CDE-AE39-BB43ED6507D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B73EBA3-870C-4CDE-AE39-BB43ED6507D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B73EBA3-870C-4CDE-AE39-BB43ED6507D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{936BE02D-79B3-4E37-8099-DE7BF649B8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{936BE02D-79B3-4E37-8099-DE7BF649B8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936BE02D-79B3-4E37-8099-DE7BF649B8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{801F902E-7B3C-47E9-B6D4-FA80FC50EC5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285D75A9-606B-4AA1-AA0F-0604932E3C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285D75A9-606B-4AA1-AA0F-0604932E3C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285D75A9-606B-4AA1-AA0F-0604932E3C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285D75A9-606B-4AA1-AA0F-0604932E3C6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
