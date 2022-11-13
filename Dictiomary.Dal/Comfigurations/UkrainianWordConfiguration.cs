@@ -8,8 +8,8 @@ namespace Dictionary.Dal.Configurations
     {
         public void Configure(EntityTypeBuilder<UkranianWord> builder)
         {
-           
-            builder.HasMany(t => t.EnglishWords)
+            builder.HasKey(t => t.Id);
+            builder.HasMany(t => t.Words)
                 .WithOne(t => t.UkranianWord)
                 .HasForeignKey(t => t.UkrId)
                 .HasPrincipalKey(t => t.Id);

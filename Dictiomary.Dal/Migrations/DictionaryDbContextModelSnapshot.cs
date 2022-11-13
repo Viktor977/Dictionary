@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Dictiomary.Dal.Migrations
+namespace Dictionary.Dal.Migrations
 {
     [DbContext(typeof(DictionaryDbContext))]
     partial class DictionaryDbContextModelSnapshot : ModelSnapshot
@@ -64,15 +64,8 @@ namespace Dictiomary.Dal.Migrations
                     b.Property<int>("EngId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Examples")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Id")
                         .HasColumnType("int");
-
-                    b.Property<string>("Word")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("UkrId", "EngId");
 
@@ -84,13 +77,13 @@ namespace Dictiomary.Dal.Migrations
             modelBuilder.Entity("Dictionary.Dal.Models.Word", b =>
                 {
                     b.HasOne("Dictionary.Dal.Models.EnglishWord", "EnglishWord")
-                        .WithMany("UkranianWords")
+                        .WithMany("Words")
                         .HasForeignKey("EngId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Dictionary.Dal.Models.UkranianWord", "UkranianWord")
-                        .WithMany("EnglishWords")
+                        .WithMany("Words")
                         .HasForeignKey("UkrId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -102,12 +95,12 @@ namespace Dictiomary.Dal.Migrations
 
             modelBuilder.Entity("Dictionary.Dal.Models.EnglishWord", b =>
                 {
-                    b.Navigation("UkranianWords");
+                    b.Navigation("Words");
                 });
 
             modelBuilder.Entity("Dictionary.Dal.Models.UkranianWord", b =>
                 {
-                    b.Navigation("EnglishWords");
+                    b.Navigation("Words");
                 });
 #pragma warning restore 612, 618
         }

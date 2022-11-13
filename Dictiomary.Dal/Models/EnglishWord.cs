@@ -5,7 +5,7 @@ namespace Dictionary.Dal.Models
 {
     public class EnglishWord : BaseEntity
     {  
-        public  ICollection<Word> UkranianWords { get; set; }
-        public EnglishWord() =>UkranianWords = new HashSet<Word>();
+        public  ICollection<Word> Words { get; set; }
+        public EnglishWord() => Words = new HashSet<Word>();
     }
 }

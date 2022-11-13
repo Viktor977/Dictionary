@@ -1,6 +1,11 @@
 ﻿using Dictionary.Bal.Interfaces;
+using Dictionary.Bal.ModelsDto;
+using Dictionary.Bal.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Dictionary.API.Controllers
 {
@@ -8,10 +13,21 @@ namespace Dictionary.API.Controllers
     [ApiController]
     public class EngController : ControllerBase
     {
-        private readonly IWordService _service;
-        public EngController(IWordService service)
+        private readonly IEngWordService _service;
+        public EngController(IEngWordService service)
         {
             _service = service;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<UkranianWordDto>>Get([FromQuery] EnglishWordDto wordDto )
+        {
+            var result = _service.GetUkrWords(wordDto);
+            if(result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
     }
 }

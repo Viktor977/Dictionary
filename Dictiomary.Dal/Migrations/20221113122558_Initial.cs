@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Dictiomary.Dal.Migrations
+namespace Dictionary.Dal.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,8 @@ namespace Dictiomary.Dal.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Word = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Word = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Examples = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,7 +26,8 @@ namespace Dictiomary.Dal.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Word = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Word = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Examples = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -36,39 +38,31 @@ namespace Dictiomary.Dal.Migrations
                 name: "Words",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     EngId = table.Column<int>(type: "int", nullable: false),
-                    EnglishWordId = table.Column<int>(type: "int", nullable: true),
                     UkrId = table.Column<int>(type: "int", nullable: false),
-                    UkranianWordId = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Words", x => x.Id);
+                    table.PrimaryKey("PK_Words", x => new { x.UkrId, x.EngId });
                     table.ForeignKey(
-                        name: "FK_Words_Englishes_EnglishWordId",
-                        column: x => x.EnglishWordId,
+                        name: "FK_Words_Englishes_EngId",
+                        column: x => x.EngId,
                         principalTable: "Englishes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Words_Ukranians_UkranianWordId",
-                        column: x => x.UkranianWordId,
+                        name: "FK_Words_Ukranians_UkrId",
+                        column: x => x.UkrId,
                         principalTable: "Ukranians",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Words_EnglishWordId",
+                name: "IX_Words_EngId",
                 table: "Words",
-                column: "EnglishWordId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Words_UkranianWordId",
-                table: "Words",
-                column: "UkranianWordId");
+                column: "EngId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -1,7 +1,12 @@
 ﻿using Dictionary.Bal.ModelsDto;
 using Dictionary.Dal.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Dictionary.Bal.Interfaces
 {
-    internal interface IEngWordService : ICrud<EnglishWordDto> { }
+    public interface IEngWordService : ICrud<EnglishWordDto> 
+    {
+       IEnumerable<UkranianWordDto> GetUkrWords(EnglishWordDto wordDto);
+    }
 }
