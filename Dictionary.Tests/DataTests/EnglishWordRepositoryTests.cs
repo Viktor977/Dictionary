@@ -29,6 +29,25 @@ namespace Dictionary.Tests.DataTests
 
         }
 
+        [Test]
+        public void AddEnglishWord_ReturnCount()
+        {
+            //Act
+            var wordDB=new DictionaryDbContext(UnitTestHelper.GetUnitDbOptions());
+            var repository=new EnglishWordRepository(wordDB);
+            var engWord=new EnglishWord() { Word="TestTest"};
+            var expectedCount = 7;
+
+            //Act
+            repository.Add(engWord);
+            wordDB.SaveChanges();
+            var actual = wordDB.Englishes.Count();
+
+            //Assert
+            Assert.IsTrue(actual == expectedCount);
+
+        }
+
         private static IEnumerable<UkranianWord> expectedUkrWords =>
         new[]
         {

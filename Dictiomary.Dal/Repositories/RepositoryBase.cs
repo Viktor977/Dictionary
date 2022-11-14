@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Dictionary.Dal.Repositories
 {
-    public class RepositoryBase<T> : IRepository<T> where T : class
+    public  class RepositoryBase<T> : IRepository<T> where T : class
     {
         private readonly DictionaryDbContext _context;
         public RepositoryBase(DictionaryDbContext context)=> _context = context;
@@ -23,6 +23,6 @@ namespace Dictionary.Dal.Repositories
 
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
 
-        public void Add(T entity) => _context.Set<T>().Add(entity);
+        public  void Add(T entity) => _context.Set<T>().AddRange(entity);
     }
 }

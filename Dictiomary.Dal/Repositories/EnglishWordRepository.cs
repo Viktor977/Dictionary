@@ -1,4 +1,5 @@
-﻿using Dictionary.Dal.Access;
+﻿
+using Dictionary.Dal.Access;
 using Dictionary.Dal.Interfaces;
 using Dictionary.Dal.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,14 @@ namespace Dictionary.Dal.Repositories
         public IEnumerable<UkranianWord> GetUkranianWords(string engWord)
         {
             var words = _context.Words
-                .Where(t => t.EnglishWord.Word == engWord)
-                .Select(t => t.UkranianWord);
+                .Where(t => t.EnglishWord.Word.Contains(engWord))
+                .Select(t => t.UkranianWord).ToList();
             return words;            
+        }
+        public EnglishWord GetEnglishWord(string engWord)
+        {
+            var word = _context.Englishes.FirstOrDefault(t=>t.Word==engWord);
+            return word;
         }
     }
 }

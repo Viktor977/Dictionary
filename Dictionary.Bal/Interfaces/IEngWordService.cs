@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Dictionary.Bal.Interfaces
 {
-    public interface IEngWordService : ICrud<EnglishWordDto> 
+    public interface IEngWordService : ICrud<WordDto> 
     {
        IEnumerable<UkranianWordDto> GetUkrWords(EnglishWordDto wordDto);
     }

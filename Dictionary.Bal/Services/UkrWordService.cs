@@ -36,6 +36,14 @@ namespace Dictionary.Bal.Services
             await _unitOfWork.SaveAsync();
         }
 
+        public IEnumerable<EnglishWordDto> GetEnglishWords(UkranianWordDto wordDto)
+        {
+            var word = _maper.Map<UkranianWordDto, UkranianWord>(wordDto);
+            var words = _unitOfWork.UkranianWordRepository.GetEnglishWords(word.Word);
+            var engWordDto=_maper.Map<IEnumerable<EnglishWord>,IEnumerable<EnglishWordDto>>(words);
+            return engWordDto;
+
+        }
 
         public async Task Update(UkranianWordDto model)
         {

@@ -1,4 +1,6 @@
-﻿using Dictionary.Dal.Access;
+﻿using AutoMapper;
+using Dictionary.Bal.Access;
+using Dictionary.Dal.Access;
 using Dictionary.Dal.Models;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -21,6 +23,13 @@ namespace Dictionary.Tests
 
             return options;
 
+        }
+
+        public static IMapper CreateMapperProfile()
+        {
+            var profile = new AutoMapperProfile();
+            var configuration=new MapperConfiguration(cfg=>cfg.AddProfile(profile));
+            return new Mapper(configuration);
         }
 
         public static void SeedData(DictionaryDbContext context)

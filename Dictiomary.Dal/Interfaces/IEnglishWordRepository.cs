@@ -7,5 +7,6 @@ namespace Dictionary.Dal.Interfaces
     public interface IEnglishWordRepository : IRepository<EnglishWord>
     {
         IEnumerable<UkranianWord> GetUkranianWords(string engWord);
+        EnglishWord GetEnglishWord(string engWord);
     }
 }
